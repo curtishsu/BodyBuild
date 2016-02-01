@@ -1,0 +1,267 @@
+/**
+ * styles.css
+ *
+ * Computer Science 50
+ * Final Project
+ *
+ * Global CSS.
+ */
+
+.container
+{
+    /* center contents */
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+#top
+{
+    /* surround with whitespace */
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+#top .nav
+{
+    /* center navigation pills */
+    display: inline-block
+}
+
+#middle .form-control
+{
+    /* center form controls */
+    display: inline-block;
+
+    /* override Bootstrap's 100% width for form controls */
+    width: auto;
+}
+
+#bottom
+{
+    /* shrink bottom's font size */
+    font-size: smaller;
+
+    /* surround with whitespace */
+    margin: 20px;
+}
+/*This is styling for the drop down tabs*/
+/*This CSS was borrowed and modified from Inspirational Pixels: http://inspirationalpixels.com/tutorials/creating-a-dropdown-menu-with-html-css#html*/
+body {
+    background:#c3c3c3
+}
+ 
+.clearfix:after {
+    display:block;
+    clear:both;
+}
+ 
+/*----- Menu Outline -----*/
+.menu-wrap {
+    width:100%;
+    box-shadow:0px 1px 3px rgba(0,0,0,0.2);
+    background:#d3d3d3
+}
+ 
+.menu {
+    width:1000px;
+    margin:0px auto;
+}
+ 
+.menu li {
+    margin:0px;
+    list-style:none;
+}
+ 
+.menu a {
+    transition:all linear 0.15s;
+    color:#919191;
+}
+ 
+.menu li:hover > a, .menu .current-item > a {
+    text-decoration:none;
+    color:#ffffff;
+}
+ 
+.menu .arrow {
+    font-size:11px;
+    line-height:0%;
+}
+ 
+/*----- Top Level -----*/
+.menu > ul > li {
+    float:center;
+    display:inline-block;
+    position:relative;
+    font-size:19px;
+}
+ 
+.menu > ul > li > a {
+    padding:10px 40px;
+    display:inline-block;
+    text-shadow:0px 1px 0px rgba(0,0,0,0.4);
+}
+ 
+.menu > ul > li:hover > a, .menu > ul > .current-item > a {
+    background:#2e2728;
+}
+ 
+/*----- Bottom Level -----*/
+.menu li:hover .sub-menu {
+    z-index:1;
+    opacity:1;
+}
+ 
+.sub-menu {
+    width:160%;
+    padding:5px 0px;
+    position:absolute;
+    top:100%;
+    left:0px;
+    z-index:-1;
+    opacity:0;
+    transition:opacity linear 0.15s;
+    box-shadow:0px 2px 3px rgba(0,0,0,0.2);
+    background:#2e2728;
+}
+ 
+.sub-menu li {
+    display:block;
+    font-size:16px;
+}
+ 
+.sub-menu li a {
+    padding:10px 30px;
+    display:block;
+}
+ 
+.sub-menu li a:hover, .sub-menu .current-item a {
+    background:#3e3436;
+}
+
+/*This is styling for searching*/
+#searchmuscle 
+{
+    height:1000px;
+    width: 250px;
+    font-size:25px;
+}
+
+#search_results
+{
+    display: inline-block;    
+}
+#search_results th
+{
+    text-align: center;
+    font-weight: bold;
+    font-size: 125%;
+    background: #c3c3c3;
+    padding: 10px 10px 10px 10px;
+}
+#search_results td
+{
+    text-align:center;
+    padding: 10px 10px 10px 10px;
+    border-style: solid;
+}
+#search_results tr:nth-child(odd)
+{
+    background: #ffffff;
+}
+#search_results tr:nth-child(even)
+{
+    background: #ffffff;
+}
+#exercises 
+{
+    height:1000px;
+    width: 250px;
+    font-size:25px;
+}
+
+/*This is styling for add */
+#workouts
+{
+    height:1000px;
+    width: 250px;
+    font-size:25px;
+}
+
+#routine_display
+{
+    background: White;
+    display: inline-block;    
+}
+#routine_display th
+{
+    text-align: center;
+    font-weight: bold;
+    font-size: 125%;
+    background: #c3c3c3;
+    padding: 10px 10px 10px 10px;
+}
+#routine_display td
+{
+    text-align:center;
+    padding: 10px 10px 10px 10px;
+    border-style: solid;
+}
+#routine_display tr:nth-child(odd)
+{
+    background: #ffffff;
+}
+#routine_display tr:nth-child(even)
+{
+    background: #ffffff;
+}
+
+#workout_display
+{
+    background: White;
+    display: inline-block;    
+}
+
+/*This is styling for workout display*/
+#workout_display th
+{
+    text-align: center;
+    font-weight: bold;
+    font-size: 125%;
+    background: #c3c3c3;
+    padding: 10px 10px 10px 10px;
+}
+#workout_display td
+{
+    text-align:center;
+    padding: 10px 10px 10px 10px;
+    border-style: solid;
+}
+#workout_display tr:nth-child(odd)
+{
+    background: #ffffff;
+}
+#workout_display tr:nth-child(even)
+{
+    background: #ffffff;
+}
+#muscle
+{
+    height:1000px;
+    width: 250px;
+    font-size:25px;
+}
+
+/*This is styling for share*/
+#intensity
+{
+    height:100px;
+    width: 250px;
+    font-size:25px;
+}
+#weights
+{
+    height:100px;
+    width: 250px;
+    font-size:25px;
+}

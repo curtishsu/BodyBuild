@@ -1,0 +1,150 @@
+Design for BodyBuild - A technical guide
+By Curtis Hsu
+
+Preview
+    
+    BodyBuild was created primarily with PHP, MySQL and HTML, with a bit of JavaScript.
+    The JavaScript was used for client-side validation of forms.
+    
+    
+Databases
+
+    BodyBuild was created with four databases - users, exercise, routine, and 
+    workout.
+    
+    The users database contains id, username, and hash. The id is auto-increment, 
+    so each user will ultimately have a unique to id to call to when they are
+    referenced. It is also the primary key. Usernames are kept unique to ensure 
+    that a password-username combination will be unique upon log in. The hash is
+    the password run through a hash. This ensures that someone who has access to 
+    the database will not have access to every user's password.
+    
+    The exercise databases contains an exercise_id, exercise_name, muscle, link
+    weights, and description. Exercise_id, similar to id for users, is auto-incremented
+    and the primary key. It allso for reference to exercises later. The name is
+    unique, to ensure that two exercises of the same name can't be created. 
+    Muscle, link, weights, and description are varchars that help describe
+    the exercise. 
+    
+    The routine database contains an id, workout_id, exercise_id, position, numsets,
+    and reps. Id is auto-incremented and the primary key, allowing for reference later. 
+    The workout_id allows the routine database to be connected to the workout
+    database. The exercise_id allows the routine database to be connected to the
+    exercise database. Numsets and Reps are integers that hold how many sets of
+    repetitions a user will do of an exercise. 
+    
+    The workout database contains a workout_id, a user_id, description, workout_name,
+    and intensity. The workout id is auto-incremented and the primary key. It is
+    how routines identifies which workout a routine will be a part of. The user_id
+    connected a workout with a user, so it can be known which workout belongs
+    to whom. The workout_name is a varchar that holds the name a user's workout.
+    While each user can only have one workout with a specific name, workout_name
+    is not unique because multiple users should be able to have workouts of the
+    same name. How users are kept from having the same workout name will be 
+    specified in the "Building a Workout" section. Description and intensity are
+    both varchars that describe a workout. 
+
+
+Logging in/Registering
+    
+    The "config.php" file is executed at the beginning of every controller file.
+    It checks to see if a user is logged in. If not, then a user will be 
+    directed to a logged in page. The "config.php" page only allows a user
+    to visit the logged in page, the register page, and the about page 
+    (the logged out file can also be used). If a user does not have an account, 
+    then he or she can register for one. During registration, a form will be
+    rendered that allows the user to input a username, a password, and a 
+    confirmation of the password. The inputs are then passed back to the
+    registration controller page. During this process, there is a 3-layer
+    check to ensure that all fields have been filled. If not, then the account 
+    will not be created. If all fields are acceptable, then the user will be
+    inserted via MySQL into the database. When a user logs in, the controller
+    page will fetch via MySQL the id of the user if the username and password 
+    match with an id. If so, the id of the user will be stored globally and
+    the user can now get past the "config.php" file at the top of every controller
+    file. 
+    
+    
+Building a Workout
+    
+    While each user should only have one workout of each name, different users
+    should be able to have workouts of the same name. Therefore, workout_name
+    is unique. To prevent users from having the same workout name, we query 
+    the database for workouts that have a specific workout_name and user_id. If we
+    find a workout, then we know that a workout has already been created with this
+    name and we stop the user from creating this workout. If not, then we allow
+    the user to create this workout. We use HTML, PHP, and Javascript to ensure that
+    all fields have been filled in. If everything checks out, then we store the
+    workout into the database. 
+    
+    To search a user only provides one input: a muscle group. This is created
+    with select-option tags in the HTML. Javascript and PHP ensures that the 
+    field is filled in appropriately. Then, the information is passed back
+    to the controller, who queries the exercise database for exercises that
+    use that muscle group, and render a display page for that muscle.
+    
+    The add input form differs from the previous forms because it requires
+    things to be passed to it from the controller. Before rendering the form, 
+    two queries are performed: one that finds all the workouts a user has 
+    and one that finds all the exercises possible. The workout names and exercise
+    names are stored in an array and sent to the form. This allows for a drop
+    down menu of a user's workouts and all the exercises via a foreach loop. After
+    the inputs are validated via the same 3-layer system as mentioned before, they
+    are stored into the database (part of the validation is that number of sets and
+    reps can not be negative or zero). Within a foreach loop of all the exercises 
+    in a workout, the exercise name and its information will be queried and stored in
+    an array to be displayed in the workout display page. 
+    
+    A key component of the design of building a workout is the flow. After each
+    step, the user is redirected to a page that is or is linked to the next
+    step of the process. After creating a workout, a user will be directed to 
+    a search page. After searching, the user will be shown a table of exercises
+    and a link to add an exercise to a workout. After adding a workout, the user's
+    routine is displayed, with links to searching or adding. 
+    
+    
+Sharing exercises
+    
+    To share an exercise, a user is prompted for a name, a muscle, a description,
+    and an optional link. All inputs are validated the same 3-layer system. 
+    To ensure uniqueness of name, the controller page will run a query on all the
+    exercises, selecting exercises that share the name the user has inputted. If
+    the names match, the user will be told that the exercise already exists and 
+    the exercise will not be added. If not, then the exercise will be added
+    To ensure uniformity in the database, all exercise names are lowercased, and
+    then the first letter is uppercased. 
+    
+    
+Viewing
+    
+    To see all of a user's exercises, the controller will query all the workouts
+    where the user_id matches the session id. The name, description, and intensity
+    of each workout will be stored in an array to be passed to on to the display
+    page to show. The user's name will also be queried and sent to the display page. 
+    
+    The form for searching a workout to be viewed is similiar to the add 
+    function. A query is performed before the form is rendered, and all the
+    workout names that share a user_id with the session_id are stored in an array.
+    The array is passed to the form, which uses a foreach loop to add the
+    option tag to each workout. This is what creates the drop down of all of
+    a user's workouts. After a user selects a workout, we query the id of the
+    workout and the name of it. Using the workout_id we just queried, we would
+    query all the workout routines from routine, which includes the number of reps,
+    sets, and exercise_id, to store in positions by using a foreach loop. Within 
+    each foreach loop, we will query the exercise's name, description, and muscle 
+    using the exercise_id we had just queried. We will store this information 
+    in positions. Positions is then sent to a display page so that the workout
+    can be rendered and displayed in a table. 
+    
+    
+Changing password/logging out
+    
+    To log out, we set the session_id to empty, expire the cookie, and destroy
+    the session so that the next user can log in and fill session_id. To change
+    password, we ask the user for their username, old password, new password,
+    and a confirmation of the new password. We use HTML, Javascript, and PHP to
+    ensure that every field is filled and that the new password and confirmation
+    are equal. Then, we compare the inputted username to the username we queried
+    with using our session_id, and use password_verify to check to see if the old
+    password is correct; if not, we apologize to the user and do not change the
+    password. If it does, then we update the user's information in the database. 

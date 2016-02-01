@@ -1,0 +1,89 @@
+Documentation for BodyBuild - A user's guide
+By Curtis Hsu
+
+Preview
+    BodyBuild is hosted by the CS50 IDE. To access the page, you must start 
+    apache50 with the command "apache50 start ~/workspace/FinalProject/public"
+    in Curtis Hsu's CS50 terminal, as well as allow acces to MySQL with the
+    command "mysql50 start". Once this has been done, the website can be found
+    at https://ide50-curtishsu.cs50.io
+
+
+About - What is BodyBuild?
+
+    Working out is difficult, and making a workout can be even harder. The 
+    mission of BodyBuild is to assist aspiring exercisers in creating workout
+    routines in a simple and sleek manner. 
+    
+
+Logging in/Registering
+
+    If you already have an account, simply log in by entering your username and
+    password into their respective input boxes. To register, click on the 
+    hyperlink under the login button. You will be asked for a username and 
+    a password. Your password must be at least 8 characters long. Once you 
+    register or log in, you are ready to build your workout!
+    
+    
+Building a workout
+
+    To create a workout, hover over the drop down tab labeled "build." Then, 
+    click on "create a workout." On this page, you will specify the name of your
+    workout, the intensity, and a quick description of it. It is important to 
+    note that all fields must be filled in to create a workout. Also, each
+    workout name must be unique. Once you create a workout, you will be directed
+    to a "Search" page. If you already have a workout that you are adding to,
+    you can either click the link at the bottom of the "Build" page or click
+    on the "Search" or "Add to a workout" options that are under the same drop
+    down tab as build. 
+    
+    The next step in building your workout is searching for exercises. Simply
+    search for the muscle group that you hope to workout and you will be
+    directed to a table that contains a list that names each exercise, specifies
+    the muscle used, specifies if weights are need, gives a quick description of
+    the exercise, and gives a link to a website that provides a visual aid. Once
+    you see an exercise you like, click on the link at the bottom of the table 
+    or clickon the "Add to a workout" option that was under the "build" drop 
+    down tab.
+    
+    The final step of building your workout is adding the exercise. Select
+    the workout you want to add to, the number of sets and reps of the exercise
+    you want to do, and the name of the exercise. Unfortuneately, reverse 
+    exercising isn't possible, so sets and reps must be positive numbers. Once
+    you have filled in all the fields, click add.
+    
+    Congratulations! You have created your workout! If you wish to add to it,
+    you can navigate between searching and adding via the links at the bottom
+    of the page or the "build" drop down menu.
+
+
+Sharing your exercises
+
+    BodyBuild also allows users to help other exercisers get fit by inserting 
+    their own exercises into our database. To contribute to the database, click
+    on the "share your exercises" option under the "share" drop down menu. With 
+    the exception of a link to a visual aid, all fields are required. Exercise
+    names are unique, so if there is an exercise already in our database, then
+    you won't be able to add in your exercise if it shares the same name.
+
+
+Viewing your workouts
+
+    To see all of your past workouts, hover over the "view" drop down tab and 
+    click on the "See all your workouts" option. Here, you will see all of your 
+    workout routines with the description and intensity you had labeled them
+    with earlier. To see the exercises of a specific exercise, either hover 
+    over the "view" tab and click on "see one workout" or click on the link
+    below the table with all of the workouts. In the drop down menu, select
+    which workout you want to see. Click search and you will be directed to
+    a table with the details of your workout routine.
+    
+
+Managing your account
+
+    To log out, hover over the "account" tab and click "log out." To change your
+    password, hover over the "account" tab and click "change password." Your new
+    password must be at least eight characters long. 
+    
+    
+Good Luck!
